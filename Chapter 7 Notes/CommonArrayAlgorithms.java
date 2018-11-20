@@ -99,6 +99,20 @@ public class CommonArrayAlgorithms
      */
     public static void findMin()
     {
+        int[] array = createRandomArray( 10, 50 );
+        int min = 51;
+        for(int i = 0; i < array.length; i++)
+        {
+            if (array[i] <= min)
+            {
+                min = array[i];
+            }
+        }
+        System.out.println(min);
+        for (int j : array)
+        {
+            System.out.println(j);
+        }
     }
 
     /*

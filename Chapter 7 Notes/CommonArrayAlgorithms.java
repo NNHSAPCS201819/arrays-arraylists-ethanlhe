@@ -13,10 +13,10 @@ public class CommonArrayAlgorithms
         {
             randomArray[ i ] = (int)( Math.random() * maxValue );
         }
-        
+
         return randomArray;
     }
-    
+
     /*
      * Prints the specified array to System.out
      */
@@ -24,7 +24,7 @@ public class CommonArrayAlgorithms
     {
         System.out.println( Arrays.toString( array ));
     }
-    
+
     /*
      * Array Algorithm #1: Sum and Average
      *  creates an array filled with random numbers
@@ -36,18 +36,16 @@ public class CommonArrayAlgorithms
     {
         double sum = 0;
         double average = 0;
-        int count = 0;
 
         int[] array = createRandomArray( 10, 50 );
 
-        for( int i = 0; i < array.length; i++ )
+        for(int element : array)
         {
-            sum += array[ i ];
-            count++;
+            sum += element;
         }
 
-        average = sum / count;
-        
+        average = sum / array.length;
+
         printArray( array );
         System.out.println( "sum: " + sum + " average: " + average );
     }
@@ -60,6 +58,15 @@ public class CommonArrayAlgorithms
      */
     public static void printElementSeparators()
     {
+        int[] array = createRandomArray(10, 50); //10 is length 50 is max value
+        for (int i = 0; i <array.length; i++) {
+            if (i < array.length-1) {
+                System.out.print(array[i] + " | "); 
+            }
+            else {
+                System.out.print(array[i]); 
+            }
+        }
     }
 
     /*
@@ -70,6 +77,15 @@ public class CommonArrayAlgorithms
      */
     public static void linearSearch( int valueToFind )
     {
+        int[] array = createRandomArray(20, 5);
+        printArray(array);
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == valueToFind) {
+                System.out.println("Index of " + valueToFind + ": " + i);
+                return;
+            }
+        }
+        System.out.println("The array does not contain " + valueToFind);
     }
 
     /*
@@ -81,6 +97,15 @@ public class CommonArrayAlgorithms
      */
     public static void swapElements( int index1, int index2 )
     {
+        int[] array = createRandomArray( 10, 50 );
+        printArray(array);
+        
+        int temp;
+        temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+        
+        printArray(array);
     }
 
     /*
@@ -90,6 +115,17 @@ public class CommonArrayAlgorithms
      */
     public static void findMax() 
     {
+        int[] array = createRandomArray( 10, 50 );
+        int maxValue = array[0];
+        for(int number : array)
+        {
+            if(number > maxValue)
+            {
+                maxValue = number;
+            }
+        }
+        printArray( array );
+        System.out.println("The max value is: " + maxValue);
     }
 
     /*
@@ -100,7 +136,7 @@ public class CommonArrayAlgorithms
     public static void findMin()
     {
         int[] array = createRandomArray( 10, 50 );
-        int min = 51;
+        int min = array[0];
         for(int i = 0; i < array.length; i++)
         {
             if (array[i] <= min)
@@ -109,10 +145,7 @@ public class CommonArrayAlgorithms
             }
         }
         System.out.println(min);
-        for (int j : array)
-        {
-            System.out.println(j);
-        }
+        printArray(array);
     }
 
     /*
@@ -125,7 +158,14 @@ public class CommonArrayAlgorithms
      */
     public static int[] copyArray()
     {
-        return null;
+        int[] yote = createRandomArray(10,20);
+        int[] copied = new int[yote.length];
+        for(int i = 0;i<copied.length;i ++){
+            copied[i] = yote[i];
+        }
+        printArray(yote);
+        printArray(copied);
+        return copied;
     }
 
 }

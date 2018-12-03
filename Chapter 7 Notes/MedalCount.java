@@ -7,6 +7,7 @@
  */
 public class MedalCount
 {
+    
     final int COUNTRIES = 7;
     final int MEDALS = 3;
 

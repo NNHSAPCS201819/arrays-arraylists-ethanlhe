@@ -23,7 +23,30 @@ public class Radar
 
     // number of scans of the radar since construction
     private int numScans;
+    /*
+     * int count = 0;
+    int[][] temp = new int[currentScan.length][currentScan[0].length];
+    int max = 0;    
+    for(int i = 0; i < this.currentScan.length; i++)
+    {
+    for(int j = 0; j < this.currentScan[j].length; j++)
+    {
+    if(currentScan[i][j] == true)
+    {
+    temp[i][j] += 1;
+    }
+    }
+    }
+    for (int q = 1; q < temp.length; q++)
+    {
+    for(int t = 1; t < temp[q].length; t++)
+    {
+    if(temp[q][t] > temp[
+    }
+    }
+    this.numScans+=1;
 
+     */
     /**
      * Constructor for objects of class Radar
      * 
@@ -36,7 +59,6 @@ public class Radar
 
         this.currentScan = new boolean[rows][cols];
         this.accumulator = new int[rows][cols];
-
 
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
@@ -60,7 +82,7 @@ public class Radar
         //    3. inject noise into the grid by invoking the injectNoise method
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
-        
+
         for(int row = 0; row < this.currentScan.length; row++)
         {
             for(int col = 0; col < this.currentScan[row].length; col++)
@@ -68,10 +90,22 @@ public class Radar
                 this.currentScan[row][col] = false;
             }
         }
-        setMonsterLocation(this.monsterLocation);
-        currentScan[ this.monsterLocation.getRow() ][ this.monsterLocation.getCol() ] = true;
-        
+        this.setMonsterLocation(this.monsterLocation);
+        this.currentScan[ this.monsterLocation.getRow() ][ this.monsterLocation.getCol() ] = true;
+        this.injectNoise();
+        for(int row = 0; row < this.currentScan.length; row++)
+        {
+            for(int col = 0; col < this.currentScan[row].length; col++)
+            {
+                if(this.currentScan[row][col] == true)
+                {
+                    this.accumulator[row][col] += 1;
+                }
+            }
+        }
+        this.numScans+=1;
     }
+
     /**
      * Sets the location of the monster
      * 
@@ -117,9 +151,27 @@ public class Radar
      */
     public Location findMonster()
     {
-        //
-        // !!! add code here !!!
-        //
+        int max = 0;
+        for(int i = 0; i < this.currentScan.length; i++)
+        {
+            for(int j = 0; j < this.currentScan[i].length; j++)
+            {
+                if(currentScan[i][j] == true)
+                {
+                    this.accumulator[i][j] += 1;
+                }
+            }
+        }
+        for(int t = 0; t < this.accumulator.length; t++)
+        {
+            for(int q = 0; q < this.accumulator[t].length; q++)
+            {
+                if(this.accumulator[t][q] > max)
+                {
+                    max = this.accumulator[t][q];
+                }
+            }
+        }
     }
 
     /**

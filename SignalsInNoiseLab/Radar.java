@@ -152,26 +152,33 @@ public class Radar
     public Location findMonster()
     {
         int max = 0;
-        for(int i = 0; i < this.currentScan.length; i++)
+        int x = 0;
+        int y = 0;
+        for(int t = 0; t < this.currentScan.length; t++)
         {
-            for(int j = 0; j < this.currentScan[i].length; j++)
+            for(int q = 0; q < this.currentScan[t].length; q++)
             {
-                if(currentScan[i][j] == true)
+                if(this.currentScan[t][q] == true)
                 {
-                    this.accumulator[i][j] += 1;
+                    this.accumulator[t][q]+=1;
                 }
             }
         }
-        for(int t = 0; t < this.accumulator.length; t++)
+
+        for(int i = 0; i < this.accumulator.length; i++)
         {
-            for(int q = 0; q < this.accumulator[t].length; q++)
+            for(int j = 0; j < this.accumulator[i].length; j++)
             {
-                if(this.accumulator[t][q] > max)
+                if(accumulator[i][j] > max)
                 {
-                    max = this.accumulator[t][q];
+                    x = i;  
+                    y = j;
+                    max = accumulator[i][j];
                 }
             }
         }
+        Location spot = new Location(x, y);
+        return spot;
     }
 
     /**
@@ -237,10 +244,6 @@ public class Radar
                 if(Math.random() < this.noiseFraction)
                 {
                     this.currentScan[row][col] = true;
-                }
-                else if(Math.random() >= this.noiseFraction)
-                {
-                    this.currentScan[row][col] = false;
                 }
             }
         }

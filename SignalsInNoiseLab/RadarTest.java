@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +19,7 @@ public class RadarTest
     }
     
     /**
-     * Sets up the test fixture.
+     * Set+s up the test fixture.
      *
      * Called before every test case method.
      */
@@ -55,14 +53,28 @@ public class RadarTest
     @Test
     public void testRadar()
     {
-        // test that the Radar class successfully finds the location of the monster after several scans
-        
-        
-        //
-        // !!! add code here !!!
-        //
-        
-        
+        Radar radar = new Radar(50,50);
+        Location loc = new Location(21,21);
+        radar.setMonsterLocation(loc);
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        radar.scan();
+        Location hi = radar.findMonster();
+        assertEquals(21, hi.getRow());
+        assertEquals(21, hi.getCol());
     }
     
     /**

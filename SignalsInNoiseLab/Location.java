@@ -11,6 +11,8 @@ public class Location
 
     /**
      * Constructor for objects of class Location
+     * 
+     * @param   the number of rows and columns in the location.
      */
     public Location(int row, int column)
     {
@@ -20,7 +22,7 @@ public class Location
 
     /**
      * gets the number of rows in the array
-     * @return      number of rows
+     * @return      number of rows.
      */
     public int getRow()
     {
@@ -28,7 +30,7 @@ public class Location
     }
     /**
      * gets the number of columns in the array
-     * @return      number of columns
+     * @return      number of columns.
      */
     public int getCol()
     {

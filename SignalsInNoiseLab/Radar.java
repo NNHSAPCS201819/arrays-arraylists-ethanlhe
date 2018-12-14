@@ -93,16 +93,17 @@ public class Radar
         this.setMonsterLocation(this.monsterLocation);
         this.currentScan[ this.monsterLocation.getRow() ][ this.monsterLocation.getCol() ] = true;
         this.injectNoise();
-        for(int row = 0; row < this.currentScan.length; row++)
+        for(int t = 0; t < this.currentScan.length; t++)
         {
-            for(int col = 0; col < this.currentScan[row].length; col++)
+            for(int q = 0; q < this.currentScan[t].length; q++)
             {
-                if(this.currentScan[row][col] == true)
+                if(this.currentScan[t][q] == true)
                 {
-                    this.accumulator[row][col] += 1;
+                    this.accumulator[t][q]+=1;
                 }
             }
         }
+
         this.numScans+=1;
     }
 
@@ -154,17 +155,6 @@ public class Radar
         int max = 0;
         int x = 0;
         int y = 0;
-        for(int t = 0; t < this.currentScan.length; t++)
-        {
-            for(int q = 0; q < this.currentScan[t].length; q++)
-            {
-                if(this.currentScan[t][q] == true)
-                {
-                    this.accumulator[t][q]+=1;
-                }
-            }
-        }
-
         for(int i = 0; i < this.accumulator.length; i++)
         {
             for(int j = 0; j < this.accumulator[i].length; j++)

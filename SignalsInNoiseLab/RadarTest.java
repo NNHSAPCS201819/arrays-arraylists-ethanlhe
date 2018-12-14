@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+    import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,10 +87,18 @@ public class RadarTest
     @Test
     public void testFalseNegative()
     {
-        //
-        // !!! add code here !!!
-        //
-        
-        
+        Radar radar = new Radar(50,50);
+        Location loc = new Location(21,21);
+        radar.setMonsterLocation(loc);
+        for(int i = 0; i<100; i++)
+        {
+            radar.scan();
+        }
+        Location hi = radar.findMonster();
+        if(radar.getAccumulatedDetection(hi) < radar.getNumScans())
+        {
+            assertTrue(true);
+        }
+ 
     }
 }

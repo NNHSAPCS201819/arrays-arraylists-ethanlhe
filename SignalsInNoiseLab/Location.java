@@ -12,7 +12,8 @@ public class Location
     /**
      * Constructor for objects of class Location
      * 
-     * @param   the number of rows and columns in the location.
+     * @param       row     the number of rows and columns in the location.
+     * @param       column      the number of columns in the location.
      */
     public Location(int row, int column)
     {

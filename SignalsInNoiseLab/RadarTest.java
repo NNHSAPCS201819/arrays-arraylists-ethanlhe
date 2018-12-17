@@ -56,25 +56,24 @@ public class RadarTest
         Radar radar = new Radar(50,50);
         Location loc = new Location(21,21);
         radar.setMonsterLocation(loc);
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
-        radar.scan();
+        for(int i = 0; i<100; i++)
+        {
+            radar.scan();
+        }
         Location hi = radar.findMonster();
         assertEquals(21, hi.getRow());
         assertEquals(21, hi.getCol());
+        
+        Radar radar2 = new Radar(50,50);
+        Location loc2 = new Location(15,30);
+        radar2.setMonsterLocation(loc2);
+        for(int i = 0; i<100; i++)
+        {
+            radar2.scan();
+        }
+        Location hey = radar2.findMonster();
+        assertEquals(15, hey.getRow());
+        assertEquals(30, hey.getCol());
     }
     
     /**

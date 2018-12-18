@@ -8,15 +8,24 @@ import java.util.Scanner;
 public class ZipTest
 {
     // instance variables - replace the example below with your own
-    
+
     public static void main( String[] args )
-   { 
-      PersonWithZip person1 = new PersonWithZip("Ethan", "He", 60540);
-      PersonWithZip person2 = new PersonWithZip("J", "R", 60540);
-      PersonWithZip person3 = new PersonWithZip("Samanyu", "Paravaanntehsnidfsjf", 60540);
-      PersonWithZip[] arrayZips = { person1, person2, person3 };
-      
-      Scanner s = new Scanner(System.in);
-      for
-   }
+    { 
+        PersonWithZip[] people = new PersonWithZip[3];
+
+        Scanner s = new Scanner(System.in);
+        for(int i = 0; i<people.length; i++)
+        {
+            System.out.println("Enter first name, last name, and zip code"+
+                " \nwith fields separated by a space: ");
+            String firstName = s.next();
+            String lastName = s.next();
+            int zipCode = s.nextInt();
+            people[i] = new PersonWithZip(firstName, lastName, zipCode);
+        }
+        for(PersonWithZip i: people)
+        {
+            System.out.println(i);
+        }
+    }
 }
